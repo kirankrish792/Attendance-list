@@ -1,0 +1,19 @@
+<% layout("layout/boilerplate") %>
+    <h1 class="text-center">Details of <%= student.name %>
+    </h1>
+    <div class="card col-md-4 mx-auto">
+        <div class="row">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/813px-Unknown_person.jpg?20200423155822"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Name:<%= student.name %>
+                </h5>
+                <p class="card-text">class:<%= student.class %>
+                </p>
+                <a href="/students">Go Back</a>
+                <!-- <form action="/students/<%= student.id %>?_method=DELETE" method="post">
+                    <button class="btn btn-danger ml-30">Delete</button>
+                </form> -->
+            </div>
+        </div>
+    </div>

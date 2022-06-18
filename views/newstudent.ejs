@@ -1,0 +1,17 @@
+<% layout("layout/boilerplate") %>
+    <h1 class="text-center mb-5"> Enter the details</h1>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form method="post" action="/newstudent">
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Name" name="name">
+                    </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Class" name="class">
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>

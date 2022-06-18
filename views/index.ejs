@@ -1,0 +1,17 @@
+<% layout("layout/boilerplate") %>
+    <h1 class="text-center mb-5"> Attendance list</h1>
+    <% for(let datas of data){ %>
+        <div class="card col-md-3 mb-5">
+            <div class="row ">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/813px-Unknown_person.jpg?20200423155822"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Name:<%= datas.name %>
+                    </h5>
+                    <p class="card-text">class:<%= datas.class %>
+                    </p>
+                    <a href="/students/<%= datas.id %>  " class="btn btn-primary">View Data</a>
+                </div>
+            </div>
+        </div>
+        <% } %>
