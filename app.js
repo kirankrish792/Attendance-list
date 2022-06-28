@@ -5,7 +5,7 @@ const app = express()
 const methodOverride = require('method-override')
 const { v4: uuidv4 } = require('uuid');
 
-const data = require('./data')
+const data = require('./Data')
 
 app.engine('ejs', engine)
 app.set('view engine', 'ejs')
