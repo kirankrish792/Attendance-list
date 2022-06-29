@@ -1,28 +1,38 @@
 <% layout("layout/boilerplate") %>
-    <h1 class="text-center mb-5"> Attendance list</h1>
+    <link rel="stylesheet" href="css/index.css">
+    <h1 class="text-center mb-5"> ATTENDANCE LIST</h1>
     <% for(let datas of data){ %>
-        
+
         <% } %>
 
-        <table class="table table-dark table-striped-columns">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Class</th>
-                <th scope="col">Roll Number</th>
-                <th scope="col">Finger_id</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% data.forEach((data,index)=>{%>
-                    <tr>
-                        <th scope="row"><%= index+1 %> </th>
-                        <td><a href="/students/<%= data.id %> "><%= data.name %> </a></td>
-                        <td><%= data.class %> </td>
-                        <td><%= data.rollNumber %> </td>
-                        <td><%= data.id %> </td>
-                      </tr>
-                    <% }) %>  
+            <table class="table table-dark table-striped-columns">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Roll Number</th>
+                    <th scope="col">Finger_id</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach((data,index)=>{%>
+                        <tr>
+                            <th scope="row">
+                                <%= index+1 %>
+                            </th>
+                            <td><a href="/students/<%= data.id %> ">
+                                    <%= data.name %>
+                                </a></td>
+                            <td>
+                                <%= data.class %>
+                            </td>
+                            <td>
+                                <%= data.rollNumber %>
+                            </td>
+                            <td>
+                                <%= data.id %>
+                            </td>
+                        </tr>
+                        <% }) %>
                 </tbody>
-          </table>
-          
+            </table>
