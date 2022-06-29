@@ -8,7 +8,7 @@ const engine = require('ejs-mate')
 const app = express()
 const methodOverride = require('method-override')
 const { v4: uuidv4 } = require('uuid');
-const {student}= require("./firebase")
+const {student}= require("./firebase-data")
 
 // const data = require('./Data')
 
