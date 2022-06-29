@@ -30,7 +30,6 @@ app.get('/students', async (req, res) => {
         let value = doc.data();
         data.push(value)
       });
-      console.log(data)
     res.render('index', { data })
 })
 
@@ -48,7 +47,6 @@ app.get('/students/:id', async(req, res) => {
         data.push(value)
     }
       });
-      console.log(data)
       const studentData = data[0]
     res.render('student', { studentData })
 })
@@ -71,9 +69,7 @@ app.delete('/students/:id',async (req,res)=>{
         data.push(doc.id)
     }
       });
-    //   res.send(data)
       const deleteData = await student.doc(data[0]).delete();
-      console.log(deleteData);
       res.redirect('/students')
 })
 

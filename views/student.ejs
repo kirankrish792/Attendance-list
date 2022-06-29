@@ -10,6 +10,8 @@
                 </h5>
                 <p class="card-text">class:<%= studentData.class %>
                 </p>
+                <p class="card-text">Roll Number:<%= studentData.rollNumber %>
+                </p>
                 <a href="/students">Go Back</a>
                 <form action="/students/<%= studentData.id %>?_method=DELETE" method="post">
                     <button class="btn btn-danger ml-30">Delete</button>
