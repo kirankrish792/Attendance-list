@@ -7,14 +7,66 @@
                     <div class="col mb-3">
                         <input type="text" class="form-control" placeholder="Name" name="name">
                     </div>
+                    <div class="input-group col mb-3">
+                        <input type="text" class="form-control" id="Finger_id" placeholder="Finger_id" name="Finger_id" readonly="true" aria-describedby="button-addon2" value="0">
+                        <input type="text" aria-label="Last name" id="Finger_hash" class="form-control" placeholder="Finger_Hash" readonly="true" name="Finger_Hash" value="0">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Get Data</button>
+                    </div>
                     <div class="col mb-3">
                         <input type="text" class="form-control" placeholder="Class" name="class">
                     </div>
                     <div class="col mb-3">
                         <input type="text" class="form-control" placeholder="Roll Number" name="rollNumber">
                     </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Email" name="email">
+                    </div>
+                    <div class="input-group col mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="button-addon3">
+                        <span class="input-group-text" style="cursor: pointer;"><i class="mdi mdi-eye-off"></i></span>
+                        <button class="btn btn-outline-secondary " type="button" id="button-addon3">Generate password</button>
+                       
+                    </div>
                 </div>
                 <button class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        const button = document.getElementById("button-addon2");
+        button.addEventListener("click", async () => {
+            const finger_id = document.getElementById("Finger_id");
+            const finger_hash = document.getElementById("Finger_hash");
+            const response = await axios.get("http://192.168.225.59/");
+            const data = response.data;
+            finger_id.value = data.id;
+            finger_hash.value = data.hex;
+            if(data.id != -1){
+                button.disabled = true;
+            }
+        })
+
+        const button2 = document.getElementById("button-addon3");
+        button2.addEventListener("click",async () => {
+            const password = document.getElementsByName("password")[0];
+            const data = await axios.get("/pass")
+            password.value = data.data;
+        }) 
+
+        const eye = document.querySelector(".mdi-eye-off");
+        eye.addEventListener("click", () => {
+            const password = document.getElementsByName("password")[0];
+            if(password.type == "password"){
+                password.type = "text";
+                eye.classList.remove("mdi-eye-off");
+                eye.classList.add("mdi-eye");
+            }else{
+                password.type = "password";
+                eye.classList.remove("mdi-eye");
+                eye.classList.add("mdi-eye-off");
+            }
+        })
+
+    </script>

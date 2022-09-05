@@ -12,6 +12,9 @@
                 </p>
                 <p class="card-text">Roll Number:<%= studentData.rollNumber %>
                 </p>
+                <p class="card-text">Finger_id:<%= studentData.Finger_id %>
+                </p>
+                <p class="card-text">Finger_Hash:<%= studentData.Finger_Hash.substring(0,60) %>......................................</p> <br>
                 <a href="/students">Go Back</a>
                 <form action="/students/<%= studentData.id %>?_method=DELETE" method="post">
                     <button class="btn btn-danger ml-30">Delete</button>
