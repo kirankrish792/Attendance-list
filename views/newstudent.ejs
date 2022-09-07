@@ -5,24 +5,24 @@
             <form method="post" action="/newstudent">
                 <div class="form-row">
                     <div class="col mb-3">
-                        <input type="text" class="form-control" placeholder="Name" name="name">
+                        <input type="text" class="form-control" placeholder="Name" name="name" required>
                     </div>
                     <div class="input-group col mb-3">
-                        <input type="text" class="form-control" id="Finger_id" placeholder="Finger_id" name="Finger_id" readonly="true" aria-describedby="button-addon2" value="0">
-                        <input type="text" aria-label="Last name" id="Finger_hash" class="form-control" placeholder="Finger_Hash" readonly="true" name="Finger_Hash" value="0">
+                        <input type="text" class="form-control" id="Finger_id" placeholder="Finger_id" name="Finger_id" readonly="true" aria-describedby="button-addon2" style="cursor: not-allowed;" required>
+                        <input type="text" aria-label="Last name" id="Finger_hash" class="form-control" placeholder="Finger_Hash" readonly="true" name="Finger_Hash" style="cursor: not-allowed;" required>
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Get Data</button>
                     </div>
                     <div class="col mb-3">
-                        <input type="text" class="form-control" placeholder="Class" name="class">
+                        <input type="text" class="form-control" placeholder="Class" name="class" required>
                     </div>
                     <div class="col mb-3">
-                        <input type="text" class="form-control" placeholder="Roll Number" name="rollNumber">
+                        <input type="text" class="form-control" placeholder="Roll Number" name="rollNumber" required>
                     </div>
                     <div class="col mb-3">
-                        <input type="text" class="form-control" placeholder="Email" name="email">
+                        <input type="text" class="form-control" placeholder="Email" name="email" required>
                     </div>
                     <div class="input-group col mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="button-addon3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="button-addon3" required>
                         <span class="input-group-text" style="cursor: pointer;"><i class="mdi mdi-eye-off"></i></span>
                         <button class="btn btn-outline-secondary " type="button" id="button-addon3">Generate password</button>
                        
@@ -37,14 +37,15 @@
 
         const button = document.getElementById("button-addon2");
         button.addEventListener("click", async () => {
+            button.disabled = true;
             const finger_id = document.getElementById("Finger_id");
             const finger_hash = document.getElementById("Finger_hash");
             const response = await axios.get("http://192.168.225.59/");
             const data = response.data;
             finger_id.value = data.id;
-            finger_hash.value = data.hex;
-            if(data.id != -1){
-                button.disabled = true;
+            finger_hash.value = data.hash;
+            if(data.id == -1){
+                button.disabled = false
             }
         })
 
@@ -68,5 +69,4 @@
                 eye.classList.add("mdi-eye-off");
             }
         })
-
     </script>

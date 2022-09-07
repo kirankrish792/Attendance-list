@@ -1,0 +1,58 @@
+<% layout("layout/boilerplate") %>
+    <h1 class="text-center mb-5"> Verify the details</h1>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form method="post" action="/Attendance">
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Uid" name="id" readonly="true" style="cursor: not-allowed;">
+                    </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Name" name="name" readonly="true" style="cursor: not-allowed;">
+                    </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Class" name="class" readonly="true" style="cursor: not-allowed;">
+                    </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Roll Number" name="rollNumber" style="cursor: not-allowed;" readonly="true">
+                    </div>
+                    <div class="col mb-3">
+                        <input type="text" class="form-control" placeholder="Email" name="email" readonly="true" style="cursor: not-allowed;">
+                    </div>
+                </div>
+                <button class="btn btn-secondary">Get Details</button>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        const button = document.querySelector(".btn-secondary");
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            const response = await axios.get("http://192.168.225.59/getAttendance")
+            .catch(()=>{
+                    button.disabled=false
+                }
+            )
+            const finger = response.data
+            console.log(finger)
+            const Student = await axios.post('/studentDetails',{'id':`${finger.id}`,'hash':`${finger.hash}`});
+            const data = Student.data
+            const name = document.getElementsByName("name")[0];
+            const class1 = document.getElementsByName("class")[0];
+            const rollNumber = document.getElementsByName("rollNumber")[0];
+            const email = document.getElementsByName("email")[0];
+            const id = document.getElementsByName("id")[0];
+            name.value = data.name;
+            class1.value = data.class;
+            rollNumber.value = data.rollNumber;
+            email.value = data.email;
+            id.value = data.id
+            if(data === "not found"){
+                button.disabled = false
+            }
+        })
+
+    </script>

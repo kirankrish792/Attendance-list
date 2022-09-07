@@ -1,6 +1,5 @@
-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-
+const { initializeApp, cert } = require('firebase-admin/app');
+const { getFirestore } = require('firebase-admin/firestore');
 const firebaseConfig = {
     "type": "service_account",
     "project_id": "biometric-attendance-953b9",
@@ -14,9 +13,13 @@ const firebaseConfig = {
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-28plj%40biometric-attendance-953b9.iam.gserviceaccount.com"
   };
   
-  initializeApp({
+  const app = initializeApp({
     credential: cert(firebaseConfig)
   });
 const db = getFirestore();
 
+
+
 module.exports.student = db.collection('students')
+module.exports.attendance = db.collection('attendance')
+

@@ -1,7 +1,8 @@
 <% layout("layout/boilerplate") %>
     <h1 class="text-center">Details of <%= studentData.name %>
     </h1>
-    <div class="card col-md-4 mx-auto">
+    <div class="col-md-4">
+    <div class="card col-md-12">
         <div class="row">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/813px-Unknown_person.jpg?20200423155822"
                 class="card-img-top" alt="...">
@@ -22,3 +23,30 @@
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-8">
+    <table class="table table-light table-striped-columns">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0; i<= date.length;i++){%>
+                <tr>
+                    <th scope="row">
+                        <%= i+1 %>
+                    </th>
+                    <td>
+                        <%= date[i] %>
+                    </td>
+                    <td>
+                        <%= time[i] %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</div>
